@@ -164,7 +164,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ProjectUtilities\CommonSession.cs" />
-    <Compile Include="ProjectUtilities\LoginAuthorizer.cs" />
+    <Compile Include="ProjectUtilities\RequiredLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

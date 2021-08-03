@@ -10,14 +10,14 @@ namespace TheIdealProject_Web_MVC.Controllers
 {
     public class Tm_ProductController : BaseController
     {
-
+        [RequiredLogin]
         public ActionResult Index()
         {
             var list = db.Tm_Product.Where(p => p.TmProductPk > 1).ToList();
             return View(list);
         }
         #region Create
-        [LoginAuthorizer]
+        [RequiredLogin]
         public ActionResult Create()
         {
             ViewBag.product_TmCategoryFk = new SelectList(db.Tm_Category, "TmCategoryPk", "CategoryName");
@@ -25,6 +25,8 @@ namespace TheIdealProject_Web_MVC.Controllers
             ViewBag.product_TmUserFk_Modifier = new SelectList(db.Tm_User, "TmUserPk", "UserName");
             return View();
         }
+
+        [RequiredLogin]
         [HttpPost]
         public ActionResult Create(Tm_Product model)
         {
