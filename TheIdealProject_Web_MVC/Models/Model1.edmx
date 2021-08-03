@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_TheIdealPrtojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_TheIdealPrtojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Tl_Product">
           <Key>
             <PropertyRef Name="Tl_ProductPk" />
@@ -55,7 +55,7 @@
           <Property Name="TmUserPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="fk_Tm_category_Tm_Product">
+        <Association Name="FK_Tm_Product_Tm_Category">
           <End Role="Tm_Category" Type="Self.Tm_Category" Multiplicity="0..1" />
           <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -96,7 +96,7 @@
           <EntitySet Name="Tm_Category" EntityType="Self.Tm_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tm_Product" EntityType="Self.Tm_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tm_User" EntityType="Self.Tm_User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_Tm_category_Tm_Product" Association="Self.fk_Tm_category_Tm_Product">
+          <AssociationSet Name="FK_Tm_Product_Tm_Category" Association="Self.FK_Tm_Product_Tm_Category">
             <End Role="Tm_Category" EntitySet="Tm_Category" />
             <End Role="Tm_Product" EntitySet="Tm_Product" />
           </AssociationSet>
@@ -109,11 +109,28 @@
             <End Role="Tm_Product" EntitySet="Tm_Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_TheIdealPrtojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_TheIdealPrtojectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tl_Product" EntityType="DB_TheIdealPrtojectModel.Tl_Product" />
+          <EntitySet Name="Tm_Category" EntityType="DB_TheIdealPrtojectModel.Tm_Category" />
+          <EntitySet Name="Tm_Product" EntityType="DB_TheIdealPrtojectModel.Tm_Product" />
+          <EntitySet Name="Tm_User" EntityType="DB_TheIdealPrtojectModel.Tm_User" />
+          <AssociationSet Name="FK_Tm_Product_Tm_Category" Association="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category">
+            <End Role="Tm_Category" EntitySet="Tm_Category" />
+            <End Role="Tm_Product" EntitySet="Tm_Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tm_user_creator_Tm_Product" Association="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product">
+            <End Role="Tm_User" EntitySet="Tm_User" />
+            <End Role="Tm_Product" EntitySet="Tm_Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tm_user_modifier_Tm_Product" Association="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product">
+            <End Role="Tm_User" EntitySet="Tm_User" />
+            <End Role="Tm_Product" EntitySet="Tm_Product" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Tl_Product">
           <Key>
             <PropertyRef Name="Tl_ProductPk" />
@@ -137,8 +154,8 @@
             <PropertyRef Name="TmCategoryPk" />
           </Key>
           <Property Name="TmCategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Tm_Product" Relationship="Self.fk_Tm_category_Tm_Product" FromRole="Tm_Category" ToRole="Tm_Product" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tm_Product" Relationship="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" FromRole="Tm_Category" ToRole="Tm_Product" />
         </EntityType>
         <EntityType Name="Tm_Product">
           <Key>
@@ -157,22 +174,22 @@
           <Property Name="product_TmUserFk_Modifier" Type="Int64" />
           <Property Name="productModifiedAt" Type="DateTime" Precision="3" />
           <Property Name="productPrice" Type="Int64" />
-          <NavigationProperty Name="Tm_Category" Relationship="Self.fk_Tm_category_Tm_Product" FromRole="Tm_Product" ToRole="Tm_Category" />
-          <NavigationProperty Name="Tm_User" Relationship="Self.fk_Tm_user_creator_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
-          <NavigationProperty Name="Tm_User1" Relationship="Self.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
+          <NavigationProperty Name="Tm_Category" Relationship="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" FromRole="Tm_Product" ToRole="Tm_Category" />
+          <NavigationProperty Name="Tm_User" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
+          <NavigationProperty Name="Tm_User1" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
         </EntityType>
         <EntityType Name="Tm_User">
           <Key>
             <PropertyRef Name="TmUserPk" />
           </Key>
           <Property Name="TmUserPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Tm_Product" Relationship="Self.fk_Tm_user_creator_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
-          <NavigationProperty Name="Tm_Product1" Relationship="Self.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tm_Product" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
+          <NavigationProperty Name="Tm_Product1" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
         </EntityType>
-        <Association Name="fk_Tm_category_Tm_Product">
-          <End Role="Tm_Category" Type="Self.Tm_Category" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
+        <Association Name="FK_Tm_Product_Tm_Category">
+          <End Type="DB_TheIdealPrtojectModel.Tm_Category" Role="Tm_Category" Multiplicity="0..1" />
+          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tm_Category">
               <PropertyRef Name="TmCategoryPk" />
@@ -183,8 +200,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Tm_user_creator_Tm_Product">
-          <End Role="Tm_User" Type="Self.Tm_User" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
+          <End Type="DB_TheIdealPrtojectModel.Tm_User" Role="Tm_User" Multiplicity="0..1" />
+          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tm_User">
               <PropertyRef Name="TmUserPk" />
@@ -195,8 +212,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_Tm_user_modifier_Tm_Product">
-          <End Role="Tm_User" Type="Self.Tm_User" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
+          <End Type="DB_TheIdealPrtojectModel.Tm_User" Role="Tm_User" Multiplicity="0..1" />
+          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tm_User">
               <PropertyRef Name="TmUserPk" />
@@ -206,24 +223,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_TheIdealPrtojectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tl_Product" EntityType="Self.Tl_Product" />
-          <EntitySet Name="Tm_Category" EntityType="Self.Tm_Category" />
-          <EntitySet Name="Tm_Product" EntityType="Self.Tm_Product" />
-          <EntitySet Name="Tm_User" EntityType="Self.Tm_User" />
-          <AssociationSet Name="fk_Tm_category_Tm_Product" Association="Self.fk_Tm_category_Tm_Product">
-            <End Role="Tm_Category" EntitySet="Tm_Category" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_creator_Tm_Product" Association="Self.fk_Tm_user_creator_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_modifier_Tm_Product" Association="Self.fk_Tm_user_modifier_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -233,54 +232,54 @@
           <EntitySetMapping Name="Tl_Product">
             <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tl_Product">
               <MappingFragment StoreEntitySet="Tl_Product">
-                <ScalarProperty Name="Tl_ProductPk" ColumnName="Tl_ProductPk" />
-                <ScalarProperty Name="Product_TmProductFk" ColumnName="Product_TmProductFk" />
-                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
-                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
-                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
-                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
-                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
-                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
-                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
-                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
                 <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
+                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
+                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
+                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
+                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
+                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
+                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
+                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
+                <ScalarProperty Name="Product_TmProductFk" ColumnName="Product_TmProductFk" />
+                <ScalarProperty Name="Tl_ProductPk" ColumnName="Tl_ProductPk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tm_Category">
             <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_Category">
               <MappingFragment StoreEntitySet="Tm_Category">
-                <ScalarProperty Name="TmCategoryPk" ColumnName="TmCategoryPk" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="TmCategoryPk" ColumnName="TmCategoryPk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tm_Product">
             <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_Product">
               <MappingFragment StoreEntitySet="Tm_Product">
-                <ScalarProperty Name="TmProductPk" ColumnName="TmProductPk" />
-                <ScalarProperty Name="Product_TlProductFk" ColumnName="Product_TlProductFk" />
-                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
-                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
-                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
-                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
-                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
-                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
-                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
-                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
                 <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
+                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
+                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
+                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
+                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
+                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
+                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
+                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
+                <ScalarProperty Name="Product_TlProductFk" ColumnName="Product_TlProductFk" />
+                <ScalarProperty Name="TmProductPk" ColumnName="TmProductPk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tm_User">
             <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_User">
               <MappingFragment StoreEntitySet="Tm_User">
-                <ScalarProperty Name="TmUserPk" ColumnName="TmUserPk" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TmUserPk" ColumnName="TmUserPk" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e7103b62855d4495ad540172f6e0af38" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tl_Product" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Product" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_User" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_category_Tm_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tl_Product" Width="1.5" PointX="5.75" PointY="2.25" />
+        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Category" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Product" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_User" Width="1.5" PointX="0.75" PointY="3.625" />
+        <AssociationConnector Association="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" />
+        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" />
+        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

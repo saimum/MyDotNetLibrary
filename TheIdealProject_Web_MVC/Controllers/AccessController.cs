@@ -22,5 +22,9 @@ namespace TheIdealProject_Web_MVC.Controllers
             CommonSession.CurretnUser = CurrentUser;
             return RedirectToAction("Index", "Tm_Product");
         }
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
     }
 }
