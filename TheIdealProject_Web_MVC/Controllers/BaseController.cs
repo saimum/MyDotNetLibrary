@@ -9,6 +9,6 @@ namespace TheIdealProject_Web_MVC.Controllers
 {
     public class BaseController : Controller
     {
-        protected DB_TheIdealPrtojectEntities DB = new DB_TheIdealPrtojectEntities();
+        protected DB_TheIdealPrtojectEntities db = new DB_TheIdealPrtojectEntities();
     }
 }
