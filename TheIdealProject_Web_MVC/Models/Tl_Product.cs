@@ -12,20 +12,22 @@ namespace TheIdealProject_Web_MVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tl_Product
+    public partial class TL_Product
     {
-        public long Tl_ProductPk { get; set; }
-        public Nullable<long> Product_TmProductFk { get; set; }
-        public string productDevelperNote { get; set; }
-        public Nullable<bool> productIsActive { get; set; }
-        public Nullable<bool> productIsViewable { get; set; }
-        public Nullable<bool> productIsDeleted { get; set; }
-        public Nullable<long> product_TmCategoryFk { get; set; }
-        public string productName { get; set; }
-        public Nullable<long> product_TmUserFk_Creator { get; set; }
-        public Nullable<System.DateTime> productCreatedAt { get; set; }
-        public Nullable<long> product_TmUserFk_Modifier { get; set; }
-        public Nullable<System.DateTime> productModifiedAt { get; set; }
-        public Nullable<long> productPrice { get; set; }
+        public long TL_ProductPk { get; set; }
+        public long TM_ProductFk { get; set; }
+        public string Product_DevelperNote { get; set; }
+        public long Product_TM_SubCategoryFk { get; set; }
+        public long Product_TL_SubCategoryFk { get; set; }
+        public Nullable<bool> Product_IsActive { get; set; }
+        public Nullable<bool> Product_IsViewable { get; set; }
+        public Nullable<bool> Product_IsDeleted { get; set; }
+        public string Product_Code { get; set; }
+        public string Product_Name { get; set; }
+        public Nullable<long> Product_Price { get; set; }
+        public Nullable<long> Product_TM_UserFk_Creator_Nt { get; set; }
+        public Nullable<System.DateTime> Product_CreatedAt_Nt { get; set; }
+        public Nullable<long> Product_TM_UserFk_Modifier_Nt { get; set; }
+        public Nullable<System.DateTime> Product_ModifiedAt_Nt { get; set; }
     }
 }

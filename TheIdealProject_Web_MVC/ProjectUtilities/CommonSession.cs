@@ -8,6 +8,6 @@ namespace TheIdealProject_Web_MVC.ProjectUtilities
 {
     public static class CommonSession
     {
-        public static Tm_User CurretnUser { get; set; }
+        public static TM_User CurretnUser { get; set; }
     }
 }

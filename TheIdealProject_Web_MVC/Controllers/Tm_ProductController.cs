@@ -9,27 +9,25 @@ using TheIdealProject_Web_MVC.ProjectUtilities;
 
 namespace TheIdealProject_Web_MVC.Controllers
 {
-    public class Tm_ProductController : BaseController
+    public class TM_ProductController : BaseController
     {
         [RequiredLogin]
         public ActionResult Index()
         {
-            var list = db.Tm_Product.Where(p => p.TmProductPk > 1).ToList();
+            var list = db.TM_Product.Where(p => p.TM_ProductPk > 1).ToList();
             return View(list);
         }
         #region Create
         [RequiredLogin]
         public ActionResult Create()
         {
-            ViewBag.product_TmCategoryFk = new SelectList(db.Tm_Category, "TmCategoryPk", "CategoryName");
-            ViewBag.product_TmUserFk_Creator = new SelectList(db.Tm_User, "TmUserPk", "UserName");
-            ViewBag.product_TmUserFk_Modifier = new SelectList(db.Tm_User, "TmUserPk", "UserName");
+            ViewBag.Product_TM_SubCategoryFk = new SelectList(db.TM_SubCategory, "TM_SubCategoryFk", "SubCategory_Name");
             return View();
         }
 
         [RequiredLogin]
         [HttpPost]
-        public ActionResult Create(Tm_Product model)
+        public ActionResult Create(TM_Product model)
         {
             var DisplayMessage = "";
             //# Cehck validation
@@ -37,17 +35,17 @@ namespace TheIdealProject_Web_MVC.Controllers
             if (validationErrors.Count == 0)
             {
                 //# add model
-                db.Tm_Product.Add(model);
-                db.SaveChanges();
+                db.TM_Product.Add(model);
+                //db.SaveChanges();
 
                 //# add log
                 var log_model = GetLogModel(model);
-                db.Tl_Product.Add(log_model);
-                db.SaveChanges();
+                db.TL_Product.Add(log_model);
+                //db.SaveChanges();
 
                 //# update model for log
-                model.Product_TlProductFk = log_model.Tl_ProductPk;
-                db.SaveChanges();
+                model.TL_ProductFk = log_model.TL_ProductPk;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
@@ -59,18 +57,16 @@ namespace TheIdealProject_Web_MVC.Controllers
             }
             ViewBag.DisplayMessage = DisplayMessage;
 
-            ViewBag.product_TmCategoryFk = new SelectList(db.Tm_Category, "TmCategoryPk", "CategoryName", model.product_TmCategoryFk);
-            ViewBag.product_TmUserFk_Creator = new SelectList(db.Tm_User, "TmUserPk", "UserName", model.product_TmUserFk_Creator);
-            ViewBag.product_TmUserFk_Modifier = new SelectList(db.Tm_User, "TmUserPk", "UserName", model.product_TmUserFk_Modifier);
+            ViewBag.Product_TM_SubCategoryFk = new SelectList(db.TM_SubCategory, "TM_SubCategoryFk", "SubCategory_Name", model.Product_TM_SubCategoryFk);
             return View(model);
         }
 
-        public Tl_Product GetLogModel(Tm_Product model)
+        public TL_Product GetLogModel(TM_Product model)
         {
 
             PropertyInfo[] modelProperties = model.GetType().GetProperties();
-            var log_model = new Tl_Product();
-            log_model.Product_TmProductFk = model.TmProductPk;
+            var log_model = new TL_Product();
+            log_model.TM_ProductFk = model.TM_ProductPk;
             //PropertyInfo[] logProps = log_model.GetType().GetProperties();
             //Type target = typeof(T);
             //var x = Activator.CreateInstance(log_model.GetType(), false);
@@ -79,14 +75,14 @@ namespace TheIdealProject_Web_MVC.Controllers
             {
                 var value = model.GetType().GetProperty(modelProp.Name).GetValue(model, null);
                 var propertyInfo = log_model.GetType().GetProperty(modelProp.Name);
-                if (propertyInfo!=null)
+                if (propertyInfo != null)
                 {
                     propertyInfo.SetValue(log_model, value, null);
                 }
             }
 
             //Type objectType = model.GetType();
-            //Type target = new Tl_Product().GetType();
+            //Type target = new TL_Product().GetType();
             //var x = Activator.CreateInstance(target, false);
             //var z = from source in objectType.GetMembers().ToList()
             //        where source.MemberType == MemberTypes.Property
@@ -112,12 +108,16 @@ namespace TheIdealProject_Web_MVC.Controllers
 
             return log_model;
         }
-        public List<string> GetValidationErrors_ToCreate(Tm_Product model)
+        public List<string> GetValidationErrors_ToCreate(TM_Product model)
         {
             var list = new List<string>();
-            if (db.Tm_Product.Where(m => m.productName == model.productName).Any())
+            if (db.TM_Product.Where(m => m.Product_Code == model.Product_Code).Any())
             {
-                list.Add("Duplicate Name");
+                list.Add("Duplicate Product_Code");
+            }
+            if (db.TM_Product.Where(m => m.Product_Name == model.Product_Name).Any())
+            {
+                list.Add("Duplicate Product_Name");
             }
             return list;
         }

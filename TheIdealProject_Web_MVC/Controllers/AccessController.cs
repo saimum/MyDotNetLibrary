@@ -10,14 +10,14 @@ namespace TheIdealProject_Web_MVC.Controllers
 {
     public class AccessController : Controller
     {
-        DB_TheIdealPrtojectEntities DB = new DB_TheIdealPrtojectEntities();
+        DB_TheIdealDatabaseEntities DB = new DB_TheIdealDatabaseEntities();
         public ActionResult Index()
         {
-            return View(DB.Tm_User.Where(a => a.TmUserPk > 1).ToList());
+            return View(DB.TM_User.Where(a => a.TM_UserPk > 1).ToList());
         }
         public ActionResult Login(long Id)
         {
-            var CurrentUser = DB.Tm_User.Where(a => a.TmUserPk == Id).FirstOrDefault();
+            var CurrentUser = DB.TM_User.Where(a => a.TM_UserPk == Id).FirstOrDefault();
             Session["CurrentUser"] = CurrentUser;
             CommonSession.CurretnUser = CurrentUser;
             return RedirectToAction("Index", "Tm_Product");

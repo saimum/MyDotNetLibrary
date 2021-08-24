@@ -12,10 +12,10 @@ namespace TheIdealProject_Web_MVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TM_Category
+    public partial class TL_Category
     {
-        public long TM_CategoryPk { get; set; }
-        public long TL_CategoryFk { get; set; }
+        public long TL_CategoryPk { get; set; }
+        public long TM_CategoryFk { get; set; }
         public string Category_Name { get; set; }
     }
 }

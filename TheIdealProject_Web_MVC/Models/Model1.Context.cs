@@ -13,10 +13,10 @@ namespace TheIdealProject_Web_MVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_TheIdealPrtojectEntities : DbContext
+    public partial class DB_TheIdealDatabaseEntities : DbContext
     {
-        public DB_TheIdealPrtojectEntities()
-            : base("name=DB_TheIdealPrtojectEntities")
+        public DB_TheIdealDatabaseEntities()
+            : base("name=DB_TheIdealDatabaseEntities")
         {
         }
     
@@ -25,9 +25,12 @@ namespace TheIdealProject_Web_MVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Tl_Product> Tl_Product { get; set; }
-        public virtual DbSet<Tm_Category> Tm_Category { get; set; }
-        public virtual DbSet<Tm_Product> Tm_Product { get; set; }
-        public virtual DbSet<Tm_User> Tm_User { get; set; }
+        public virtual DbSet<TL_Category> TL_Category { get; set; }
+        public virtual DbSet<TL_Product> TL_Product { get; set; }
+        public virtual DbSet<TL_SubCategory> TL_SubCategory { get; set; }
+        public virtual DbSet<TM_Category> TM_Category { get; set; }
+        public virtual DbSet<TM_Product> TM_Product { get; set; }
+        public virtual DbSet<TM_SubCategory> TM_SubCategory { get; set; }
+        public virtual DbSet<TM_User> TM_User { get; set; }
     }
 }

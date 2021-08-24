@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 @{
-    var CurrentUser = (TheIdealProject_Web_MVC.Models.Tm_User)HttpContext.Current.Session["CurrentUser"];
+    var CurrentUser = (TheIdealProject_Web_MVC.Models.TM_User)HttpContext.Current.Session["CurrentUser"];
 }
 <html>
 <head>
@@ -21,7 +21,7 @@
                 </button>
                 @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 
-                <span class="navbar-brand">@CurrentUser.UserName</span>
+                <span class="navbar-brand">@CurrentUser.User_Name</span>
             </div>
             @*<div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

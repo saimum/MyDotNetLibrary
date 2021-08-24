@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e7103b62855d4495ad540172f6e0af38" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tl_Product" Width="1.5" PointX="5.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Category" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_Product" Width="1.5" PointX="3" PointY="2.5" />
-        <EntityTypeShape EntityType="DB_TheIdealPrtojectModel.Tm_User" Width="1.5" PointX="0.75" PointY="3.625" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" />
-        <AssociationConnector Association="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" />
+      <Diagram DiagramId="1c8b06c56b8c473c9bdecef9f60de5e8" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TL_Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TL_Product" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TL_SubCategory" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TM_Category" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TM_Product" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TM_SubCategory" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_TheIdealDatabaseModel.TM_User" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

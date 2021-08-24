@@ -12,21 +12,10 @@ namespace TheIdealProject_Web_MVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tm_User
+    public partial class TM_User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tm_User()
-        {
-            this.Tm_Product = new HashSet<Tm_Product>();
-            this.Tm_Product1 = new HashSet<Tm_Product>();
-        }
-    
-        public long TmUserPk { get; set; }
-        public string UserName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tm_Product> Tm_Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tm_Product> Tm_Product1 { get; set; }
+        public long TM_UserPk { get; set; }
+        public string User_Name { get; set; }
+        public string User_Password { get; set; }
     }
 }

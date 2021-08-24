@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheIdealProject_Web_MVC.Models.Tm_User>
+﻿@model IEnumerable<TheIdealProject_Web_MVC.Models.TM_User>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.User_Name)
         </th>
         <th></th>
     </tr>
@@ -21,13 +21,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserName)
+            @Html.DisplayFor(modelItem => item.User_Name)
         </td>
         <td>
-            @Html.ActionLink("Login", "Login", new { id = item.TmUserPk }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.TmUserPk }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TmUserPk }) |
-            @*@Html.ActionLink("Delete", "Delete", new { id=item.TmUserPk })*@
+            @Html.ActionLink("Login", "Login", new { id = item.TM_UserPk }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.TM_UserPk }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TM_UserPk }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.TM_UserPk })*@
         </td>
     </tr>
 }

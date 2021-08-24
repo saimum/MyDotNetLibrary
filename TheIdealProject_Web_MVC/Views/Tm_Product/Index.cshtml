@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheIdealProject_Web_MVC.Models.Tm_Product>
+﻿@model IEnumerable<TheIdealProject_Web_MVC.Models.TM_Product>
 
 @{
     ViewBag.Title = "Index";
@@ -13,88 +13,41 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Product_TlProductFk)
+            @Html.DisplayNameFor(model => model.TM_ProductPk)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.productDevelperNote)
+            @Html.DisplayNameFor(model => model.Product_Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.productIsActive)
+            @Html.DisplayNameFor(model => model.Product_Code)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.productIsViewable)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productIsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productCreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productModifiedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tm_Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tm_User.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tm_User1.UserName)
+            @Html.DisplayNameFor(model => model.Product_Price)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product_TlProductFk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productDevelperNote)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productIsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productIsViewable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productIsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productCreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productModifiedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tm_Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tm_User.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tm_User1.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TmProductPk }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TmProductPk }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TmProductPk })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TM_ProductPk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TM_ProductPk }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TM_ProductPk }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TM_ProductPk })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -4,282 +4,292 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB_TheIdealPrtojectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Tl_Product">
+      <Schema Namespace="DB_TheIdealDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TL_Category">
           <Key>
-            <PropertyRef Name="Tl_ProductPk" />
+            <PropertyRef Name="TL_CategoryPk" />
           </Key>
-          <Property Name="Tl_ProductPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_TmProductFk" Type="bigint" />
-          <Property Name="productDevelperNote" Type="varchar" MaxLength="50" />
-          <Property Name="productIsActive" Type="bit" />
-          <Property Name="productIsViewable" Type="bit" />
-          <Property Name="productIsDeleted" Type="bit" />
-          <Property Name="product_TmCategoryFk" Type="bigint" />
-          <Property Name="productName" Type="varchar" MaxLength="50" />
-          <Property Name="product_TmUserFk_Creator" Type="bigint" />
-          <Property Name="productCreatedAt" Type="datetime" />
-          <Property Name="product_TmUserFk_Modifier" Type="bigint" />
-          <Property Name="productModifiedAt" Type="datetime" />
-          <Property Name="productPrice" Type="bigint" />
+          <Property Name="TL_CategoryPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TM_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Category_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tm_Category">
+        <EntityType Name="TL_Product">
           <Key>
-            <PropertyRef Name="TmCategoryPk" />
+            <PropertyRef Name="TL_ProductPk" />
           </Key>
-          <Property Name="TmCategoryPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TL_ProductPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TM_ProductFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_DevelperNote" Type="varchar" MaxLength="50" />
+          <Property Name="Product_TM_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_TL_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_IsActive" Type="bit" />
+          <Property Name="Product_IsViewable" Type="bit" />
+          <Property Name="Product_IsDeleted" Type="bit" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Price" Type="bigint" />
+          <Property Name="Product_TM_UserFk_Creator_Nt" Type="bigint" />
+          <Property Name="Product_CreatedAt_Nt" Type="datetime" />
+          <Property Name="Product_TM_UserFk_Modifier_Nt" Type="bigint" />
+          <Property Name="Product_ModifiedAt_Nt" Type="datetime" />
         </EntityType>
-        <EntityType Name="Tm_Product">
+        <EntityType Name="TL_SubCategory">
           <Key>
-            <PropertyRef Name="TmProductPk" />
+            <PropertyRef Name="TL_SubCategoryPk" />
           </Key>
-          <Property Name="TmProductPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_TlProductFk" Type="bigint" />
-          <Property Name="productDevelperNote" Type="varchar" MaxLength="50" />
-          <Property Name="productIsActive" Type="bit" />
-          <Property Name="productIsViewable" Type="bit" />
-          <Property Name="productIsDeleted" Type="bit" />
-          <Property Name="product_TmCategoryFk" Type="bigint" />
-          <Property Name="productName" Type="varchar" MaxLength="50" />
-          <Property Name="product_TmUserFk_Creator" Type="bigint" />
-          <Property Name="productCreatedAt" Type="datetime" />
-          <Property Name="product_TmUserFk_Modifier" Type="bigint" />
-          <Property Name="productModifiedAt" Type="datetime" />
-          <Property Name="productPrice" Type="bigint" />
+          <Property Name="TL_SubCategoryPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TM_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="TM_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="TL_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="SubCategory_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tm_User">
+        <EntityType Name="TM_Category">
           <Key>
-            <PropertyRef Name="TmUserPk" />
+            <PropertyRef Name="TM_CategoryPk" />
           </Key>
-          <Property Name="TmUserPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TM_CategoryPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TL_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Category_Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Tm_Product_Tm_Category">
-          <End Role="Tm_Category" Type="Self.Tm_Category" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_Category">
-              <PropertyRef Name="TmCategoryPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmCategoryFk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Tm_user_creator_Tm_Product">
-          <End Role="Tm_User" Type="Self.Tm_User" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_User">
-              <PropertyRef Name="TmUserPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmUserFk_Creator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Tm_user_modifier_Tm_Product">
-          <End Role="Tm_User" Type="Self.Tm_User" Multiplicity="0..1" />
-          <End Role="Tm_Product" Type="Self.Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_User">
-              <PropertyRef Name="TmUserPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmUserFk_Modifier" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DB_TheIdealPrtojectModelStoreContainer">
-          <EntitySet Name="Tl_Product" EntityType="Self.Tl_Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tm_Category" EntityType="Self.Tm_Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tm_Product" EntityType="Self.Tm_Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tm_User" EntityType="Self.Tm_User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Tm_Product_Tm_Category" Association="Self.FK_Tm_Product_Tm_Category">
-            <End Role="Tm_Category" EntitySet="Tm_Category" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_creator_Tm_Product" Association="Self.fk_Tm_user_creator_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_modifier_Tm_Product" Association="Self.fk_Tm_user_modifier_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
+        <EntityType Name="TM_Product">
+          <Key>
+            <PropertyRef Name="TM_ProductPk" />
+          </Key>
+          <Property Name="TM_ProductPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TL_ProductFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_DevelperNote" Type="varchar" MaxLength="50" />
+          <Property Name="Product_TM_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_TL_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="Product_IsActive" Type="bit" />
+          <Property Name="Product_IsViewable" Type="bit" />
+          <Property Name="Product_IsDeleted" Type="bit" />
+          <Property Name="Product_Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_Price" Type="bigint" />
+          <Property Name="Product_TM_UserFk_Creator_Nt" Type="bigint" />
+          <Property Name="Product_CreatedAt_Nt" Type="datetime" />
+          <Property Name="Product_TM_UserFk_Modifier_Nt" Type="bigint" />
+          <Property Name="Product_ModifiedAt_Nt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TM_SubCategory">
+          <Key>
+            <PropertyRef Name="TM_SubCategoryPk" />
+          </Key>
+          <Property Name="TM_SubCategoryPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TL_SubCategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="TM_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="TL_CategoryFk" Type="bigint" Nullable="false" />
+          <Property Name="SubCategory_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_User">
+          <Key>
+            <PropertyRef Name="TM_UserPk" />
+          </Key>
+          <Property Name="TM_UserPk" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_TheIdealDatabaseModelStoreContainer">
+          <EntitySet Name="TL_Category" EntityType="Self.TL_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TL_Product" EntityType="Self.TL_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TL_SubCategory" EntityType="Self.TL_SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Category" EntityType="Self.TM_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Product" EntityType="Self.TM_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_SubCategory" EntityType="Self.TM_SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_User" EntityType="Self.TM_User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DB_TheIdealPrtojectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DB_TheIdealPrtojectEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tl_Product" EntityType="DB_TheIdealPrtojectModel.Tl_Product" />
-          <EntitySet Name="Tm_Category" EntityType="DB_TheIdealPrtojectModel.Tm_Category" />
-          <EntitySet Name="Tm_Product" EntityType="DB_TheIdealPrtojectModel.Tm_Product" />
-          <EntitySet Name="Tm_User" EntityType="DB_TheIdealPrtojectModel.Tm_User" />
-          <AssociationSet Name="FK_Tm_Product_Tm_Category" Association="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category">
-            <End Role="Tm_Category" EntitySet="Tm_Category" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_creator_Tm_Product" Association="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Tm_user_modifier_Tm_Product" Association="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product">
-            <End Role="Tm_User" EntitySet="Tm_User" />
-            <End Role="Tm_Product" EntitySet="Tm_Product" />
-          </AssociationSet>
+      <Schema Namespace="DB_TheIdealDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TL_Category">
+          <Key>
+            <PropertyRef Name="TL_CategoryPk" />
+          </Key>
+          <Property Name="TL_CategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TM_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TL_Product">
+          <Key>
+            <PropertyRef Name="TL_ProductPk" />
+          </Key>
+          <Property Name="TL_ProductPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TM_ProductFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_DevelperNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_TM_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_TL_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_IsActive" Type="Boolean" />
+          <Property Name="Product_IsViewable" Type="Boolean" />
+          <Property Name="Product_IsDeleted" Type="Boolean" />
+          <Property Name="Product_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_Price" Type="Int64" />
+          <Property Name="Product_TM_UserFk_Creator_Nt" Type="Int64" />
+          <Property Name="Product_CreatedAt_Nt" Type="DateTime" Precision="3" />
+          <Property Name="Product_TM_UserFk_Modifier_Nt" Type="Int64" />
+          <Property Name="Product_ModifiedAt_Nt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TL_SubCategory">
+          <Key>
+            <PropertyRef Name="TL_SubCategoryPk" />
+          </Key>
+          <Property Name="TL_SubCategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TM_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="TM_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="TL_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="SubCategory_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_Category">
+          <Key>
+            <PropertyRef Name="TM_CategoryPk" />
+          </Key>
+          <Property Name="TM_CategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TL_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Category_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_Product">
+          <Key>
+            <PropertyRef Name="TM_ProductPk" />
+          </Key>
+          <Property Name="TM_ProductPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TL_ProductFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_DevelperNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_TM_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_TL_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="Product_IsActive" Type="Boolean" />
+          <Property Name="Product_IsViewable" Type="Boolean" />
+          <Property Name="Product_IsDeleted" Type="Boolean" />
+          <Property Name="Product_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_Price" Type="Int64" />
+          <Property Name="Product_TM_UserFk_Creator_Nt" Type="Int64" />
+          <Property Name="Product_CreatedAt_Nt" Type="DateTime" Precision="3" />
+          <Property Name="Product_TM_UserFk_Modifier_Nt" Type="Int64" />
+          <Property Name="Product_ModifiedAt_Nt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TM_SubCategory">
+          <Key>
+            <PropertyRef Name="TM_SubCategoryPk" />
+          </Key>
+          <Property Name="TM_SubCategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TL_SubCategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="TM_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="TL_CategoryFk" Type="Int64" Nullable="false" />
+          <Property Name="SubCategory_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TM_User">
+          <Key>
+            <PropertyRef Name="TM_UserPk" />
+          </Key>
+          <Property Name="TM_UserPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DB_TheIdealDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TL_Category" EntityType="Self.TL_Category" />
+          <EntitySet Name="TL_Product" EntityType="Self.TL_Product" />
+          <EntitySet Name="TL_SubCategory" EntityType="Self.TL_SubCategory" />
+          <EntitySet Name="TM_Category" EntityType="Self.TM_Category" />
+          <EntitySet Name="TM_Product" EntityType="Self.TM_Product" />
+          <EntitySet Name="TM_SubCategory" EntityType="Self.TM_SubCategory" />
+          <EntitySet Name="TM_User" EntityType="Self.TM_User" />
         </EntityContainer>
-        <EntityType Name="Tl_Product">
-          <Key>
-            <PropertyRef Name="Tl_ProductPk" />
-          </Key>
-          <Property Name="Tl_ProductPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_TmProductFk" Type="Int64" />
-          <Property Name="productDevelperNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="productIsActive" Type="Boolean" />
-          <Property Name="productIsViewable" Type="Boolean" />
-          <Property Name="productIsDeleted" Type="Boolean" />
-          <Property Name="product_TmCategoryFk" Type="Int64" />
-          <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="product_TmUserFk_Creator" Type="Int64" />
-          <Property Name="productCreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="product_TmUserFk_Modifier" Type="Int64" />
-          <Property Name="productModifiedAt" Type="DateTime" Precision="3" />
-          <Property Name="productPrice" Type="Int64" />
-        </EntityType>
-        <EntityType Name="Tm_Category">
-          <Key>
-            <PropertyRef Name="TmCategoryPk" />
-          </Key>
-          <Property Name="TmCategoryPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tm_Product" Relationship="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" FromRole="Tm_Category" ToRole="Tm_Product" />
-        </EntityType>
-        <EntityType Name="Tm_Product">
-          <Key>
-            <PropertyRef Name="TmProductPk" />
-          </Key>
-          <Property Name="TmProductPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_TlProductFk" Type="Int64" />
-          <Property Name="productDevelperNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="productIsActive" Type="Boolean" />
-          <Property Name="productIsViewable" Type="Boolean" />
-          <Property Name="productIsDeleted" Type="Boolean" />
-          <Property Name="product_TmCategoryFk" Type="Int64" />
-          <Property Name="productName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="product_TmUserFk_Creator" Type="Int64" />
-          <Property Name="productCreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="product_TmUserFk_Modifier" Type="Int64" />
-          <Property Name="productModifiedAt" Type="DateTime" Precision="3" />
-          <Property Name="productPrice" Type="Int64" />
-          <NavigationProperty Name="Tm_Category" Relationship="DB_TheIdealPrtojectModel.FK_Tm_Product_Tm_Category" FromRole="Tm_Product" ToRole="Tm_Category" />
-          <NavigationProperty Name="Tm_User" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
-          <NavigationProperty Name="Tm_User1" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_Product" ToRole="Tm_User" />
-        </EntityType>
-        <EntityType Name="Tm_User">
-          <Key>
-            <PropertyRef Name="TmUserPk" />
-          </Key>
-          <Property Name="TmUserPk" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tm_Product" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_creator_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
-          <NavigationProperty Name="Tm_Product1" Relationship="DB_TheIdealPrtojectModel.fk_Tm_user_modifier_Tm_Product" FromRole="Tm_User" ToRole="Tm_Product" />
-        </EntityType>
-        <Association Name="FK_Tm_Product_Tm_Category">
-          <End Type="DB_TheIdealPrtojectModel.Tm_Category" Role="Tm_Category" Multiplicity="0..1" />
-          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_Category">
-              <PropertyRef Name="TmCategoryPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmCategoryFk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Tm_user_creator_Tm_Product">
-          <End Type="DB_TheIdealPrtojectModel.Tm_User" Role="Tm_User" Multiplicity="0..1" />
-          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_User">
-              <PropertyRef Name="TmUserPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmUserFk_Creator" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Tm_user_modifier_Tm_Product">
-          <End Type="DB_TheIdealPrtojectModel.Tm_User" Role="Tm_User" Multiplicity="0..1" />
-          <End Type="DB_TheIdealPrtojectModel.Tm_Product" Role="Tm_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tm_User">
-              <PropertyRef Name="TmUserPk" />
-            </Principal>
-            <Dependent Role="Tm_Product">
-              <PropertyRef Name="product_TmUserFk_Modifier" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_TheIdealPrtojectModelStoreContainer" CdmEntityContainer="DB_TheIdealPrtojectEntities">
-          <EntitySetMapping Name="Tl_Product">
-            <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tl_Product">
-              <MappingFragment StoreEntitySet="Tl_Product">
-                <ScalarProperty Name="productPrice" ColumnName="productPrice" />
-                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
-                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
-                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
-                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
-                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
-                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
-                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
-                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
-                <ScalarProperty Name="Product_TmProductFk" ColumnName="Product_TmProductFk" />
-                <ScalarProperty Name="Tl_ProductPk" ColumnName="Tl_ProductPk" />
+        <EntityContainerMapping StorageEntityContainer="DB_TheIdealDatabaseModelStoreContainer" CdmEntityContainer="DB_TheIdealDatabaseEntities">
+          <EntitySetMapping Name="TL_Category">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TL_Category">
+              <MappingFragment StoreEntitySet="TL_Category">
+                <ScalarProperty Name="TL_CategoryPk" ColumnName="TL_CategoryPk" />
+                <ScalarProperty Name="TM_CategoryFk" ColumnName="TM_CategoryFk" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tm_Category">
-            <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_Category">
-              <MappingFragment StoreEntitySet="Tm_Category">
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="TmCategoryPk" ColumnName="TmCategoryPk" />
+          <EntitySetMapping Name="TL_Product">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TL_Product">
+              <MappingFragment StoreEntitySet="TL_Product">
+                <ScalarProperty Name="TL_ProductPk" ColumnName="TL_ProductPk" />
+                <ScalarProperty Name="TM_ProductFk" ColumnName="TM_ProductFk" />
+                <ScalarProperty Name="Product_DevelperNote" ColumnName="Product_DevelperNote" />
+                <ScalarProperty Name="Product_TM_SubCategoryFk" ColumnName="Product_TM_SubCategoryFk" />
+                <ScalarProperty Name="Product_TL_SubCategoryFk" ColumnName="Product_TL_SubCategoryFk" />
+                <ScalarProperty Name="Product_IsActive" ColumnName="Product_IsActive" />
+                <ScalarProperty Name="Product_IsViewable" ColumnName="Product_IsViewable" />
+                <ScalarProperty Name="Product_IsDeleted" ColumnName="Product_IsDeleted" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+                <ScalarProperty Name="Product_TM_UserFk_Creator_Nt" ColumnName="Product_TM_UserFk_Creator_Nt" />
+                <ScalarProperty Name="Product_CreatedAt_Nt" ColumnName="Product_CreatedAt_Nt" />
+                <ScalarProperty Name="Product_TM_UserFk_Modifier_Nt" ColumnName="Product_TM_UserFk_Modifier_Nt" />
+                <ScalarProperty Name="Product_ModifiedAt_Nt" ColumnName="Product_ModifiedAt_Nt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tm_Product">
-            <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_Product">
-              <MappingFragment StoreEntitySet="Tm_Product">
-                <ScalarProperty Name="productPrice" ColumnName="productPrice" />
-                <ScalarProperty Name="productModifiedAt" ColumnName="productModifiedAt" />
-                <ScalarProperty Name="product_TmUserFk_Modifier" ColumnName="product_TmUserFk_Modifier" />
-                <ScalarProperty Name="productCreatedAt" ColumnName="productCreatedAt" />
-                <ScalarProperty Name="product_TmUserFk_Creator" ColumnName="product_TmUserFk_Creator" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="product_TmCategoryFk" ColumnName="product_TmCategoryFk" />
-                <ScalarProperty Name="productIsDeleted" ColumnName="productIsDeleted" />
-                <ScalarProperty Name="productIsViewable" ColumnName="productIsViewable" />
-                <ScalarProperty Name="productIsActive" ColumnName="productIsActive" />
-                <ScalarProperty Name="productDevelperNote" ColumnName="productDevelperNote" />
-                <ScalarProperty Name="Product_TlProductFk" ColumnName="Product_TlProductFk" />
-                <ScalarProperty Name="TmProductPk" ColumnName="TmProductPk" />
+          <EntitySetMapping Name="TL_SubCategory">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TL_SubCategory">
+              <MappingFragment StoreEntitySet="TL_SubCategory">
+                <ScalarProperty Name="TL_SubCategoryPk" ColumnName="TL_SubCategoryPk" />
+                <ScalarProperty Name="TM_SubCategoryFk" ColumnName="TM_SubCategoryFk" />
+                <ScalarProperty Name="TM_CategoryFk" ColumnName="TM_CategoryFk" />
+                <ScalarProperty Name="TL_CategoryFk" ColumnName="TL_CategoryFk" />
+                <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tm_User">
-            <EntityTypeMapping TypeName="DB_TheIdealPrtojectModel.Tm_User">
-              <MappingFragment StoreEntitySet="Tm_User">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="TmUserPk" ColumnName="TmUserPk" />
+          <EntitySetMapping Name="TM_Category">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TM_Category">
+              <MappingFragment StoreEntitySet="TM_Category">
+                <ScalarProperty Name="TM_CategoryPk" ColumnName="TM_CategoryPk" />
+                <ScalarProperty Name="TL_CategoryFk" ColumnName="TL_CategoryFk" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_Product">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TM_Product">
+              <MappingFragment StoreEntitySet="TM_Product">
+                <ScalarProperty Name="TM_ProductPk" ColumnName="TM_ProductPk" />
+                <ScalarProperty Name="TL_ProductFk" ColumnName="TL_ProductFk" />
+                <ScalarProperty Name="Product_DevelperNote" ColumnName="Product_DevelperNote" />
+                <ScalarProperty Name="Product_TM_SubCategoryFk" ColumnName="Product_TM_SubCategoryFk" />
+                <ScalarProperty Name="Product_TL_SubCategoryFk" ColumnName="Product_TL_SubCategoryFk" />
+                <ScalarProperty Name="Product_IsActive" ColumnName="Product_IsActive" />
+                <ScalarProperty Name="Product_IsViewable" ColumnName="Product_IsViewable" />
+                <ScalarProperty Name="Product_IsDeleted" ColumnName="Product_IsDeleted" />
+                <ScalarProperty Name="Product_Code" ColumnName="Product_Code" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+                <ScalarProperty Name="Product_TM_UserFk_Creator_Nt" ColumnName="Product_TM_UserFk_Creator_Nt" />
+                <ScalarProperty Name="Product_CreatedAt_Nt" ColumnName="Product_CreatedAt_Nt" />
+                <ScalarProperty Name="Product_TM_UserFk_Modifier_Nt" ColumnName="Product_TM_UserFk_Modifier_Nt" />
+                <ScalarProperty Name="Product_ModifiedAt_Nt" ColumnName="Product_ModifiedAt_Nt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_SubCategory">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TM_SubCategory">
+              <MappingFragment StoreEntitySet="TM_SubCategory">
+                <ScalarProperty Name="TM_SubCategoryPk" ColumnName="TM_SubCategoryPk" />
+                <ScalarProperty Name="TL_SubCategoryFk" ColumnName="TL_SubCategoryFk" />
+                <ScalarProperty Name="TM_CategoryFk" ColumnName="TM_CategoryFk" />
+                <ScalarProperty Name="TL_CategoryFk" ColumnName="TL_CategoryFk" />
+                <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_User">
+            <EntityTypeMapping TypeName="DB_TheIdealDatabaseModel.TM_User">
+              <MappingFragment StoreEntitySet="TM_User">
+                <ScalarProperty Name="TM_UserPk" ColumnName="TM_UserPk" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -298,7 +308,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
