@@ -31,7 +31,7 @@ namespace TheIdealProject_Web_MVC.Controllers
         //public ActionResult Create(TM_Product model)
         public ActionResult Create(FormCollection formCollection)
         {
-            TM_Product model = GetModelFromFormColleciton(formCollection); 
+            TM_Product model = GetModelFromFormColleciton(formCollection);
             var DisplayMessage = "";
             //# Cehck validation
             var validationErrors = GetValidationErrors_ToCreate(model);
@@ -42,13 +42,16 @@ namespace TheIdealProject_Web_MVC.Controllers
                 //db.SaveChanges();
 
                 //# add log
-                var log_model = GetLogModelFromModel(model);
-                db.TL_Product.Add(log_model);
+                var model_log = GetLogModelFromModel(model);
+                db.TL_Product.Add(model_log);
                 //db.SaveChanges();
 
                 //# update model for log
-                model.TL_ProductFk = log_model.TL_ProductPk;
+                model.TL_ProductFk = model_log.TL_ProductPk;
                 //db.SaveChanges();
+
+                //# Set success message 
+                DisplayMessage = "Successfully addded";
                 return RedirectToAction("Index");
             }
             else
@@ -106,7 +109,8 @@ namespace TheIdealProject_Web_MVC.Controllers
             return log_model;
         }
 
-        private TM_Product GetModelFromFormColleciton(FormCollection formCollection) {
+        private TM_Product GetModelFromFormColleciton(FormCollection formCollection)
+        {
             var model = new TM_Product();
             PropertyInfo[] modelProperties = model.GetType().GetProperties();
             foreach (PropertyInfo modelProp in modelProperties)
@@ -117,8 +121,8 @@ namespace TheIdealProject_Web_MVC.Controllers
                     //var value = ConvertToPrimitive(modelProp.ReflectedType.ToString(), stringValue);// Convert.ToInt32(10);
                     //var value = ConvertToPrimitive(modelProp.ReflectedType.ToString(), stringValue);// Convert.ToInt32(10);
                     TypeConverter typeConverter = TypeDescriptor.GetConverter(modelProp.ReflectedType);
-                    object value = typeConverter.ConvertFromString(stringValue);
-                    modelProp.SetValue(model,value,null);
+                    object value = ConvertToPrimitive(modelProp.PropertyType.Name, stringValue);// typeConverter.ConvertFromString(stringValue);
+                    modelProp.SetValue(model, value, null);
                 }
                 //var value = model.GetType().GetProperty(modelProp.Name).GetValue(model, null);
 
@@ -132,14 +136,23 @@ namespace TheIdealProject_Web_MVC.Controllers
             return model;
         }
 
-        private object ConvertToPrimitive(string typeName, string stringValue) {
-
-            var res = Convert.ToInt32(stringValue);
-            if (typeName == "")
-            {
-                
-            }
-
+        private object ConvertToPrimitive(string typeName, string stringValue)
+        {
+            if (typeName == "String") { return stringValue; }
+            else if (typeName == "byte") { return Convert.ToByte(stringValue); }
+            else if (typeName == "sbyte") { return Convert.ToSByte(stringValue); }
+            else if (typeName == "char") { return Convert.ToChar(stringValue); }
+            else if (typeName == "decimal") { return Convert.ToDecimal(stringValue); }
+            else if (typeName == "double") { return Convert.ToDouble(stringValue); }
+            else if (typeName == "float") { return Convert.ToSingle(stringValue); }
+            else if (typeName == "int") { return Convert.ToInt32(stringValue); }
+            else if (typeName == "uint") { return Convert.ToUInt32(stringValue); }
+            //else if (typeName == "nint") { return Convert.ToIntPtr(stringValue); }
+            //else if (typeName == "nuint") { return Convert.ToUIntPtr(stringValue); }
+            else if (typeName == "long") { return Convert.ToInt64(stringValue); }
+            else if (typeName == "ulong") { return Convert.ToUInt64(stringValue); }
+            else if (typeName == "short") { return Convert.ToInt16(stringValue); }
+            else if (typeName == "ushort") { return Convert.ToUInt16(stringValue); }
             return null;
         }
         private List<string> GetValidationErrors_ToCreate(TM_Product model)
