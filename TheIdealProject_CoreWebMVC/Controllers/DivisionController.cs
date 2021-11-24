@@ -19,7 +19,7 @@ namespace TheIdealProject_CoreWebMVC.Controllers
         {
 
             var list = db.Division.ToList();
-            return View();
+            return View(list);
         }
     }
 }
