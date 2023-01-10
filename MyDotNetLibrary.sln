@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{329157E3-20A
 		MYSP_Help.sql = MYSP_Help.sql
 		MYSVF_GetDotNetDataType.sql = MYSVF_GetDotNetDataType.sql
 		MYSVF_GetMonthName.sql = MYSVF_GetMonthName.sql
-		Split String TVF.sql = Split String TVF.sql
+		MYTVF_STRING_SPLIT.sql = MYTVF_STRING_SPLIT.sql
 	EndProjectSection
 EndProject
 Global
