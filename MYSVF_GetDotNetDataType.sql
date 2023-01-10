@@ -1,11 +1,11 @@
 ﻿CREATE FUNCTION [dbo].[MYSVF_GetDotNetDataType] 
 (
-@sqlTypeName varchar(20)
+@sqlTypeName varchar(50)
 )
-RETURNS varchar(20)
+RETURNS varchar(50)
 AS
 BEGIN
-declare @dotNetTypeName varchar(100);
+declare @dotNetTypeName varchar(50);
 
 IF (@sqlTypeName = 'bigint') BEGIN SET  @dotNetTypeName='Int64' END
 ELSE IF (@sqlTypeName = 'binary') BEGIN SET  @dotNetTypeName='Byte[]' END

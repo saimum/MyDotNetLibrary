@@ -1,5 +1,5 @@
 ﻿Create procedure [dbo].[MYSP_CreateModel]
-	@objname nvarchar(776) = NULL		-- object name we're after
+	@objname varchar(776) = NULL
 AS
 BEGIN
 	set nocount on

@@ -1,7 +1,7 @@
 ﻿Create FUNCTION [dbo].[MYTVF_STRING_SPLIT]
 (
     @string NVARCHAR(MAX),
-    @delimiter CHAR(1),
+    @delimiter CHAR(10),
 	@index int
 )
 RETURNS @output TABLE(

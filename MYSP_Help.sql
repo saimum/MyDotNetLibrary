@@ -3,7 +3,7 @@
 AS
 BEGIN
 	set nocount on
-	declare	@dbname	sysname ,@no varchar(35), @yes varchar(35), @none varchar(35);
+	declare	@dbname	sysname ,@no varchar(5), @yes varchar(5), @none varchar(5);
 	select @no = 'no', @yes = 'yes', @none = 'none';
 
 	declare @objid int;
