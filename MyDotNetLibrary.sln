@@ -5,7 +5,14 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIdealProject_Web_MVC", "TheIdealProject_Web_MVC\TheIdealProject_Web_MVC.csproj", "{E06B85C4-DC34-4967-A045-B5FE143BA757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIdealProject_CoreWebMVC", "TheIdealProject_CoreWebMVC\TheIdealProject_CoreWebMVC.csproj", "{E4C0DD67-0F97-4555-82FD-8987E392912A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheIdealProject_CoreWebMVC", "TheIdealProject_CoreWebMVC\TheIdealProject_CoreWebMVC.csproj", "{E4C0DD67-0F97-4555-82FD-8987E392912A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{329157E3-20A6-47C0-A88D-B2F9686DA04F}"
+	ProjectSection(SolutionItems) = preProject
+		MYSP_CreateModel.sql = MYSP_CreateModel.sql
+		MYSP_Help.sql = MYSP_Help.sql
+		Split String TVF.sql = Split String TVF.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
