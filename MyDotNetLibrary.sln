@@ -14,11 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{329157E3-20A
 		MYSVF_GetDotNetDataType.sql = MYSVF_GetDotNetDataType.sql
 		MYSVF_GetMonthName.sql = MYSVF_GetMonthName.sql
 		MYTVF_STRING_SPLIT.sql = MYTVF_STRING_SPLIT.sql
+		SP_GetByCriteria.sql = SP_GetByCriteria.sql
+		SP_Insert.sql = SP_Insert.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_RDLC", "Web_RDLC\Web_RDLC.csproj", "{741E38D9-E628-4C64-A2C7-E537F2176717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core3.1_JWT", "core3.1_JWT\core3.1_JWT.csproj", "{2D031C6C-C545-4A23-A2EE-F477D35184EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core3.1_JWT", "core3.1_JWT\core3.1_JWT.csproj", "{2D031C6C-C545-4A23-A2EE-F477D35184EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
