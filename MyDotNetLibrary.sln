@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIdealProject_Web_MVC", "TheIdealProject_Web_MVC\TheIdealProject_Web_MVC.csproj", "{E06B85C4-DC34-4967-A045-B5FE143BA757}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_RDLC", "Web_RDLC\Web_RDLC.csproj", "{741E38D9-E628-4C64-A2C7-E537F2176717}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core3.1_JWT", "core3.1_JWT\core3.1_JWT.csproj", "{2D031C6C-C545-4A23-A2EE-F477D35184EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2023", "WebApplication2023\WebApplication2023.csproj", "{701C93A1-26F4-48D5-BCA9-58F9EDB537C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{2D031C6C-C545-4A23-A2EE-F477D35184EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D031C6C-C545-4A23-A2EE-F477D35184EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D031C6C-C545-4A23-A2EE-F477D35184EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701C93A1-26F4-48D5-BCA9-58F9EDB537C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701C93A1-26F4-48D5-BCA9-58F9EDB537C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701C93A1-26F4-48D5-BCA9-58F9EDB537C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701C93A1-26F4-48D5-BCA9-58F9EDB537C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
