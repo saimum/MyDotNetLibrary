@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33424.131
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheIdealProject_Web_MVC", "TheIdealProject_Web_MVC\TheIdealProject_Web_MVC.csproj", "{E06B85C4-DC34-4967-A045-B5FE143BA757}"
 EndProject
@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core3.1_JWT", "core3.1_JWT\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCore7_withEF", "WebCore7_withEF\WebCore7_withEF.csproj", "{C80DC2FC-02E8-4E38-A463-5DCEB287CCD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreWithRDLC", "WebCoreWithRDLC\WebCoreWithRDLC.csproj", "{AF9DD925-024D-44A1-B962-09A80B793CB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreWithRDLC", "WebCoreWithRDLC\WebCoreWithRDLC.csproj", "{AF9DD925-024D-44A1-B962-09A80B793CB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
