@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCore7_withEF", "WebCore7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreWithRDLC", "WebCoreWithRDLC\WebCoreWithRDLC.csproj", "{AF9DD925-024D-44A1-B962-09A80B793CB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppExcelExport", "WebAppExcelExport\WebAppExcelExport.csproj", "{F00A8BDC-0FD6-46D9-A4D7-31EB21664AEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{AF9DD925-024D-44A1-B962-09A80B793CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF9DD925-024D-44A1-B962-09A80B793CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF9DD925-024D-44A1-B962-09A80B793CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00A8BDC-0FD6-46D9-A4D7-31EB21664AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00A8BDC-0FD6-46D9-A4D7-31EB21664AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00A8BDC-0FD6-46D9-A4D7-31EB21664AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00A8BDC-0FD6-46D9-A4D7-31EB21664AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
