@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{329157E3-20A
 		MYTVF_STRING_SPLIT.sql = MYTVF_STRING_SPLIT.sql
 		SP_GetByCriteria.sql = SP_GetByCriteria.sql
 		SP_Insert.sql = SP_Insert.sql
+		XML convert to table.sql = XML convert to table.sql
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "core3.1_JWT", "core3.1_JWT\core3.1_JWT.csproj", "{2D031C6C-C545-4A23-A2EE-F477D35184EC}"
